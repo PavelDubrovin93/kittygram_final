@@ -45,7 +45,7 @@ jobs:
         POSTGRES_USER: django_user
         POSTGRES_PASSWORD: django_password
         POSTGRES_DB: django_db
-        DB_HOST: 127.0.0.1
+        DB_HOST: 0.0.0.0
         DB_PORT: 5434
       run: |
         cd backend/
