@@ -41,6 +41,12 @@ jobs:
       # что нужно проверить файлы только в папке backend/
       run: python -m flake8 backend/
     - name: Backend test
+      env:
+        POSTGRES_USER: django_user
+        POSTGRES_PASSWORD: django_password
+        POSTGRES_DB: django_db
+        DB_HOST: 127.0.0.1
+        DB_PORT: 5434
       run: |
         cd backend/
         python manage.py test
