@@ -3,7 +3,9 @@ import os
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 
-def debug_check(debug: str):
+def debug_check(debug):
+    if isinstance(debug, bool):
+        return debug
     if debug.lower() == 'false':
         return False
     return True
