@@ -3,13 +3,18 @@ import os
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 
+def debug_check(debug: str):
+    if debug.lower() == 'false':
+        return False
+    return True
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
-DEBUG = os.getenv('DEBUG_MODE', True)
+DEBUG = debug_check(os.getenv('DEBUG_MODE', True))
 
-ALLOWED_HOSTS = str(os.getenv('ALLOWED_HOSTS', 'localhost, 127.0.0.1')).split(', ')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost, 127.0.0.1').split(', ')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
